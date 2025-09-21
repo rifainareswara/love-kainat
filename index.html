@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>I Love You — Kainat Sangra</title>
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --accent: #ff4d6d
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial
+        }
+
+        body {
+            background: radial-gradient(ellipse at 10% 10%, rgba(255, 77, 109, 0.06), transparent 10%), radial-gradient(ellipse at 90% 90%, rgba(79, 70, 229, 0.04), transparent 10%), var(--bg);
+            color: #e6eef8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden
+        }
+
+        .card {
+            width: 100%;
+            max-width: 760px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+            position: relative;
+            overflow: hidden
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 0.4px
+        }
+
+        p.lead {
+            color: #d7e7ff88;
+            margin: 10px 0 20px
+        }
+
+        /* big heart */
+        .heart-wrap {
+            display: flex;
+            gap: 20px;
+            align-items: center
+        }
+
+        .big-heart {
+            width: 120px;
+            height: 120px;
+            position: relative
+        }
+
+        .big-heart:before,
+        .big-heart:after {
+            content: ' ';
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            width: 60px;
+            height: 96px;
+            background: var(--accent);
+            border-radius: 60px 60px 0 0;
+            transform-origin: center;
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.18)
+        }
+
+        .big-heart:before {
+            transform: translate(-50%, -25%) rotate(-45deg)
+        }
+
+        .big-heart:after {
+            transform: translate(-50%, -25%) rotate(45deg)
+        }
+
+        .big-heart .heart-core {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -35%);
+            font-weight: 700
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.06)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        .big-heart {
+            animation: pulse 1400ms infinite ease-in-out
+        }
+
+        /* typing text */
+        .typewriter {
+            font-family: monospace, monospace;
+            background: linear-gradient(90deg, #fff 0%, #ffd1e0 40%, #fff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 20px
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background: #fff;
+            margin-left: 6px;
+            vertical-align: middle;
+            animation: blink 900ms steps(1) infinite
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0
+            }
+        }
+
+        /* floating hearts */
+        .floating {
+            position: absolute;
+            inset: 0;
+            pointer-events: none
+        }
+
+        .floating i {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            transform: translate(-50%, -50%);
+            opacity: 0.9
+        }
+
+        /* butterflies */
+        .butterfly {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: url('https://cdn-icons-png.flaticon.com/512/2917/2917995.png') no-repeat center/contain;
+            opacity: 0.9;
+            animation: fly 10s linear infinite
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0) rotate(0deg)
+            }
+
+            50% {
+                transform: translate(100px, -200px) rotate(180deg)
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg)
+            }
+        }
+
+        /* message box */
+        .message {
+            margin-top: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 12px
+        }
+
+        .big-msg {
+            font-size: 20px;
+            margin: 0;
+            line-height: 1.25
+        }
+
+        /* buttons */
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        button {
+            background: linear-gradient(180deg, var(--accent), #ff2b63);
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(255, 77, 109, 0.18);
+            transition: transform .12s ease
+        }
+
+        button:active {
+            transform: translateY(2px)
+        }
+
+        .ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #cfe6ff
+        }
+
+        /* footer */
+        .from {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #bcd5ff66
+        }
+
+        @media (max-width:520px) {
+            .heart-wrap {
+                flex-direction: row;
+                align-items: center
+            }
+
+            .big-heart {
+                width: 88px;
+                height: 88px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" role="main" aria-live="polite">
+        <div class="heart-wrap">
+            <div class="big-heart" aria-hidden="true">
+                <div class="heart-core"></div>
+            </div>
+            <div style="flex:1">
+                <h1>For You, Kainat Sangra ❤️</h1>
+                <p class="lead">Sometimes words aren’t enough — so I made this little code to make your heart smile.</p>
+                <div class="typewriter" id="typewriter"></div>
+            </div>
+        </div>
+
+        <div class="message" id="messageBox" hidden>
+            <p class="big-msg" id="bigMsg">I love you, my darling <strong>Kainat Sangra</strong>.<br>I really miss you —
+                every second without you feels like endless longing.</p>
+            <div class="actions">
+                <button id="btnSurprise">Open Surprise 💌</button>
+                <button id="btnReset" class="ghost">Replay</button>
+            </div>
+            <div class="from">— From the one who always misses you</div>
+        </div>
+
+        <div class="floating" id="floatingHearts" aria-hidden="true"></div>
+    </div>
+
+    <script>
+        // Typewriter effect
+        const phrase = "I love you, my darling Kainat Sangra. I really miss you ❤️";
+        const tw = document.getElementById('typewriter');
+        let i = 0;
+        function type() {
+            if (i <= phrase.length) {
+                tw.textContent = phrase.slice(0, i);
+                const cur = document.createElement('span');
+                cur.className = 'cursor';
+                if (tw.lastChild) tw.removeChild(tw.lastChild);
+                tw.appendChild(cur);
+                i++;
+                setTimeout(type, 70 + Math.random() * 80);
+            } else {
+                setTimeout(() => {
+                    document.getElementById('messageBox').hidden = false;
+                    launchHearts();
+                    releaseButterflies();
+                }, 700);
+            }
+        }
+        type();
+
+        // Floating hearts
+        function launchHearts() {
+            const container = document.getElementById('floatingHearts');
+            const count = 18;
+            for (let k = 0; k < count; k++) {
+                const el = document.createElement('i');
+                el.innerHTML = '❤️';
+                const left = Math.random() * 100;
+                el.style.left = left + '%';
+                el.style.top = 100 + Math.random() * 40 + '%';
+                el.style.opacity = 0.9 - Math.random() * 0.5;
+                el.style.fontSize = (10 + Math.random() * 26) + 'px';
+                container.appendChild(el);
+                animateHeart(el);
+            }
+        }
+        function animateHeart(node) {
+            const duration = 5500 + Math.random() * 3500;
+            const start = performance.now();
+            const sway = (Math.random() * 40 - 20);
+            function frame(t) {
+                const p = (t - start) / duration;
+                if (p > 1) { node.remove(); return }
+                const eased = 1 - Math.pow(1 - p, 3);
+                node.style.transform = `translateY(${-eased * 320}px) translateX(${Math.sin(eased * 3.14) * sway}px) scale(${0.8 + eased * 0.6})`;
+                node.style.opacity = String(0.9 - eased * 0.9);
+                requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+        }
+
+        // Surprise burst
+        document.getElementById('btnSurprise').addEventListener('click', () => {
+            burst(28);
+            const msg = document.getElementById('bigMsg');
+            msg.innerHTML = "I knew it ❤️<br><small>You mean the world to me, Kainat.</small>";
+            document.getElementById('btnSurprise').disabled = true;
+        });
+
+        document.getElementById('btnReset').addEventListener('click', () => {
+            location.reload();
+        });
+
+        function burst(n) {
+            const container = document.getElementById('floatingHearts');
+            for (let j = 0; j < n; j++) {
+                const h = document.createElement('i'); h.innerHTML = '💖';
+                h.style.left = (50 + (Math.random() * 240 - 120)) + '%';
+                h.style.top = (50 + (Math.random() * 80 - 40)) + '%';
+                h.style.fontSize = (12 + Math.random() * 28) + 'px';
+                container.appendChild(h);
+                const dur = 1600 + Math.random() * 1200;
+                const start = performance.now();
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 0.6 + Math.random() * 1.6;
+                function pop(t) {
+                    const p = (t - start) / dur;
+                    if (p > 1) { h.remove(); return }
+                    h.style.transform = `translate(${Math.cos(angle) * p * speed * 300}px, ${-Math.sin(angle) * p * speed * 300}px) rotate(${p * 720}deg) scale(${1 - p * 0.2})`;
+                    h.style.opacity = String(1 - p);
+                    requestAnimationFrame(pop);
+                }
+                requestAnimationFrame(pop);
+            }
+        }
+
+        // Butterflies
+        function releaseButterflies() {
+            const container = document.body;
+            for (let b = 0; b < 6; b++) {
+                const bf = document.createElement('div');
+                bf.className = 'butterfly';
+                bf.style.left = Math.random() * 100 + '%';
+                bf.style.top = '100%';
+                bf.style.animationDuration = (8 + Math.random() * 6) + 's';
+                container.appendChild(bf);
+                setTimeout(() => bf.remove(), 14000);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && !document.getElementById('btnSurprise').disabled) {
+                document.getElementById('btnSurprise').click();
+            }
+        });
+    </script>
+</body>
+
+</html>
